@@ -22,7 +22,6 @@ public class AFlipGirlies : CardAction
         bool isCat = PairManager.GetGirlGlobal(s) == PairManager.Girl.CAT;
         foreach (Card card in c.hand) {
 			if (CardsHelper.IsCardTraitActive(s, card, PairManager.PairTrait)) {
-                card.flipAnim = 0;
                 card.flopAnim = isCat ? 1 : -1;
             }
         }
