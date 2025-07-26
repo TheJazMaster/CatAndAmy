@@ -30,13 +30,33 @@ public class StatusManager : IHook, IKokoroApi.IV2.IStatusRenderingApi.IHook
         ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this, 0);
     }
 
+    [HarmonyPriority(Priority.Low)]
     [HarmonyTranspiler]
     [HarmonyPatch(typeof(AMove), nameof(AMove.Begin))]
     private static IEnumerable<CodeInstruction> AMove_Begin_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il, MethodBase originalMethod)
     {
+        instructions = new SequenceBlockMatcher<CodeInstruction>(instructions)
+            .Find(
+                ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldLoc).ExtractLabels(out var labels),
+                ILMatches.LdcI4((int)Enum.Parse<Status>("strafe")),
+                ILMatches.Call("Get").Anchor(out var anchor1),
+                ILMatches.LdcI4(0),
+                ILMatches.Ble.GetBranchTarget(out var label)
+            )
+			.Insert(SequenceMatcherPastBoundsDirection.Before, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
+                ldLoc.Value.WithLabels(labels),
+                new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(StatusManager), nameof(GetTempStrafe))),
+            ])
+            .Anchors()
+            .PointerMatcher(anchor1)
+            .Insert(SequenceMatcherPastBoundsDirection.After, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
+                new(OpCodes.Add)
+            ])
+            .AllElements();
+        
         return new SequenceBlockMatcher<CodeInstruction>(instructions)
             .Find(
-                ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldLoc),
+                ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldLoc2),
                 ILMatches.LdcI4(Status.strafe),
                 ILMatches.Call("Get").Anchor(out var anchor),
                 ILMatches.LdcI4(0),
@@ -47,7 +67,7 @@ public class StatusManager : IHook, IKokoroApi.IV2.IStatusRenderingApi.IHook
             .Anchors()
             .PointerMatcher(anchor)
 			.Insert(SequenceMatcherPastBoundsDirection.After, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
-                ldLoc,
+                ldLoc2,
                 new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(StatusManager), nameof(GetTempStrafe))),
                 new(OpCodes.Add)
             ])

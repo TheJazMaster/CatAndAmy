@@ -92,7 +92,7 @@
         },
         "PowerCouple": {
             "name": "POWER COUPLE",
-            "description": "When <c=442DB9>Amy</c> is up, attacks deal <c=action>+1 damage</c>. When <c=442DB9>Cat</c> is up, all attacks move the enemy <c=action>1 space to the left</c>, or <c=action>+1 space</c> if they already move the enemy.\n<c=downside>All non-Cat&Amy attacks deal 1 less dmg."
+            "description": "When <c=442DB9>Amy</c> is up, card attacks deal <c=action>+1 damage</c>. When <c=442DB9>Cat</c> is up, all card attacks move the enemy <c=action>1 space to the left</c>, or <c=action>+1 space</c> if they already move the enemy.\n<c=downside>All non-Cat&Amy card attacks deal 1 less dmg."
         },
 
 

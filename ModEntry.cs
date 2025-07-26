@@ -311,7 +311,6 @@ public sealed partial class ModEntry : SimpleMod {
 			.SelectMany(d => d.Directories)
             .SelectMany(RegisterAnimations)) {
             ret.Add(anim.LoopTag, anim);
-            Logger.LogInformation(anim.LoopTag);
         }
         return ret;
     }

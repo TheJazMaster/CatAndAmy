@@ -6,3 +6,4 @@
 /home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/Release/net8.0/CatAndAmy.AssemblyInfo.cs
 /home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/Release/net8.0/CatAndAmy.csproj.CoreCompileInputs.cache
 /home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/Release/net8.0/CatAndAmy.dll
+/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/Release/net8.0/CatAndAmy.sourcelink.json

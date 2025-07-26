@@ -461,9 +461,9 @@ internal sealed class BackBreaker : Card, IRegisterableCard, IHasCustomCardTrait
 		new AAttack {
 			damage = GetDmg(s, upgrade == Upgrade.A ? 3 : 2)
 		},
-		new AStatus {
-			status = Status.evade,
-			statusAmount = upgrade == Upgrade.B ? 1 : 2,
+		new AMove {
+			isRandom = true,
+			dir = upgrade == Upgrade.A ? 3 : upgrade == Upgrade.B ? 1 : 2,
 			targetPlayer = true
 		},
 	]);
@@ -878,7 +878,7 @@ internal sealed class Kisses : Card, IRegisterableCard
 	}
 
 	public override CardData GetData(State state) => new() {
-		cost = upgrade == Upgrade.B ? 1 : 2,
+		cost = upgrade == Upgrade.B ? 2 : 3,
 		exhaust = true,
 		artTint = "ffffff",
 	};

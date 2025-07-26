@@ -219,7 +219,9 @@ internal sealed class PowerCouple : Artifact, IRegisterableArtifact
 
 	public override int ModifyBaseDamage(int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
 	{
-		int total = 0;
+		if (!fromPlayer) return 0;
+
+        int total = 0;
 		if (card == null || card.GetMeta().deck != ModEntry.Instance.CatAndAmyDeck.Deck) total--;
 
 		if (PairManager.GetGirlGlobal(state) != PairManager.Girl.CAT) total++;
