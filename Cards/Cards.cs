@@ -68,7 +68,7 @@ internal sealed class Kiss : Card, IRegisterableCard, IHasCustomCardTraits
 internal sealed class StarCrossedLovers : Card, IRegisterableCard
 {
 	public static void Register(IModHelper helper, IPluginPackage<IModManifest> package) {
-		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.common, helper, package, out _);
+		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.common, helper, package, out _, null, true);
 	}
 
 	public override CardData GetData(State state) => new() {
@@ -865,7 +865,7 @@ internal sealed class DoubleSwitch : Card, IRegisterableCard
 	public override List<CardAction> GetActions(State s, Combat c) => [
 		new AStatus {
 			status = ModEntry.Instance.SwitchesStatus,
-			statusAmount = 2,
+			statusAmount = 3,
 			targetPlayer = true
 		}
 	];

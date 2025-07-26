@@ -1,6 +1,6 @@
 {
     "UniqueName": "TheJazMaster.CatAndAmy",
-    "Version": "0.2.1",
+    "Version": "0.2.2",
     "RequiredApiVersion": "0.1.0",
     "EntryPointAssembly": "CatAndAmy.dll",
     "LoadPhase": "AfterDbInit",

@@ -165,10 +165,10 @@ public static class PairManager
         }
     }
 
-    private static void FlopToWhereNeeded(G g, Card card, bool to) {
+    internal static void FlopToWhereNeeded(G g, Card card, bool to) {
         card.flipped = to;
         card.flipAnim = 0;
-        card.flopAnim = card.flipped ? 1.0 : (-1.0);
+        card.flopAnim = to ? 1 : -1;
         card.OnFlip(g);
     }
 }

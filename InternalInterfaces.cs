@@ -6,7 +6,7 @@ namespace TheJazMaster.CatAndAmy;
 
 internal interface IRegisterableCard
 {
-	static ICardEntry Register(Type type, Rarity rarity, IModHelper helper, IPluginPackage<IModManifest> package, out string name, Deck? deck = null) {
+	static ICardEntry Register(Type type, Rarity rarity, IModHelper helper, IPluginPackage<IModManifest> package, out string name, Deck? deck = null, bool dontOffer = false) {
 		name = type.Name;
 		return helper.Content.Cards.RegisterCard(name, new()
 		{
@@ -15,7 +15,8 @@ internal interface IRegisterableCard
 			{
 				deck = deck ?? ModEntry.Instance.CatAndAmyDeck.Deck,
 				rarity = rarity,
-				upgradesTo = [Upgrade.A, Upgrade.B]
+				upgradesTo = [Upgrade.A, Upgrade.B],
+				dontOffer = dontOffer
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Sprites/Cards/{name}.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", name, "name"]).Localize
