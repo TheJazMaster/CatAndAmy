@@ -1,0 +1,27 @@
+{
+    "UniqueName": "TheJazMaster.CatAndAmy",
+    "Version": "0.2.0",
+    "RequiredApiVersion": "0.1.0",
+    "EntryPointAssembly": "CatAndAmy.dll",
+    "LoadPhase": "AfterDbInit",
+    "Dependencies": [
+        {
+            "UniqueName": "Shockah.Kokoro",
+            "Version": "1.2.0"
+        },
+        {
+            "UniqueName": "TheJazMaster.MoreDifficulties",
+            "Version": "1.3.0",
+            "IsRequired": false
+        },
+        {
+            "UniqueName": "Shockah.DuoArtifacts",
+            "IsRequired": false
+        }
+    ],
+    "UpdateChecks": {
+        "GitHub": {
+            "Repository": "TheJazMaster/CatAndAmy"
+        }
+    }
+}

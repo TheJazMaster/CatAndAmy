@@ -1,0 +1,206 @@
+{
+    "character": {
+        "name": "Cat & Amy",
+        "description": [
+            "<c=442DB9>CAT & AMY</c>",
+            "Two lovers lost in space. Their <c=keyword>pair</c> cards switch between top and bottom after each play, and specialize in <c=keyword>ship movement, dealing damage, and moving the enemy</c>."
+        ]
+    },
+    "trait": {
+        "pair": {
+            "name": "Pair card",
+            "description": {
+                "both": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played.",
+                "top": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=442DB9>Cat</c> is currently up.",
+                "bottom": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=442DB9>Amy</c> is currently up."
+            }
+        }
+    },
+    "action": {
+        "variableHintPair": {
+            "description": "X = Pair cards in hand{{Amount}}."
+        },
+        "enemyMove": {
+            "name": {
+                "left": "Enemy move left",
+                "right": "Enemy move right"
+            },
+            "description": {
+                "left": "The enemy will instantly move {{Amount}} spaces to the <c=keyword>LEFT</c>.",
+                "right": "The enemy will instantly move {{Amount}} spaces to the <c=keyword>RIGHT</c>."
+            }
+        }
+    },
+    "status": {
+        "Lovers": {
+            "name": "Lovers",
+            "description": "The next <c=keyword>{0}</c> <c=cardtrait>pair</c> cards you play are played in full. <c=downside>Goes away at end of turn.</c>"
+        },
+        "Switches": {
+            "name": "Switches",
+            "description": "<c=442DB9>Cat & Amy's</c> <c=cardtrait>pair</c> cards are <c=cardtrait>dual</c>. <c=downside>Decreases by 1 at the end of your turn.</c>"
+        },
+        "Devotion": {
+            "name": "Devotion",
+            "description": "At the start of your turn, gain <c=keyword>{0}</c> <c=status>LOVERS</c>."
+        },
+        "Kisses": {
+            "name": "Kisses",
+            "description": "At the start of your turn, add <c=keyword>{0}</c> <c=card>Kiss</c>es to your hand."
+        },
+        "KissesA": {
+            "name": "Kisses (A)",
+            "description": "At the start of your turn, add <c=keyword>{0}</c> <c=card>Kiss A</c>s to your hand."
+        },
+        "Reflex": {
+            "name": "Reflex",
+            "description": "Fire for <c=keyword>{0}</c> damage immediately after every move the opposing ship makes during your turn."
+        },
+        "TempReflex": {
+            "name": "Temp Reflex",
+            "description": "Fire for <c=keyword>{0}</c> damage immediately after every move the opposing ship makes during your turn. <c=downside>Goes away at end of turn.</c>"
+        },
+        "TempStrafe": {
+            "name": "Temp Strafe",
+            "description": "Fire for {0} damage immediately after every move you make. <c=downside>Goes away at start of turn.</c>"
+        },
+        "LeadOn": {
+            "name": "Lead On",
+            "description": "After every move the opposing ship makes, this ship moves {0} additional spaces in the same direction. <c=downside>Goes away at end of turn.</c>"
+        }
+    },
+    "artifact": {
+        "OverwhelmingAttraction": {
+            "name": "OVERWHELMING ATTRACTION",
+            "description": "Every 4 times you switch <c=442DB9>Cat & Amy</c> by playing one of their <c=cardtrait>pair</c> cards, gain 1 <c=card>Kiss</c>."
+        },
+        "HeartShapedCookies": {
+            "name": "HEART-SHAPED COOKIES",
+            "description": "On pickup, add 2 non-<c=cardtrait>temp</c> <c=card>Kisses</c> to your deck. The second time you play a <c=card>Kiss</c> each turn, gain 1 <c=status>OVERDRIVE</c>."
+        },
+        "WorkoutRoutine": {
+            "name": "WORKOUT ROUTINE",
+            "description": "Gain 1 <c=status>EVADE</c> whenever you switch <c=442DB9>Cat & Amy</c> by playing one of their <c=cardtrait>pair</c> cards for the <c=keyword>third</c> time in a turn."
+        },
+        "SentimentalLocket": {
+            "name": "SENTIMENTAL LOCKET",
+            "description": "At the start of combat, gain 1 <c=card>Starcrossed Lovers</c>."
+        },
+        "LoveLetters": {
+            "name": "LOVE LETTERS",
+            "description": "Every 4 times you switch <c=442DB9>Cat & Amy</c> by playing one of their <c?cardtrait>pair</c> cards, gain 1 <c=energy>ENERGY</c>."
+        },
+        "PowerCouple": {
+            "name": "POWER COUPLE",
+            "description": "When <c=442DB9>Amy</c> is up, attacks deal <c=action>+1 damage</c>. When <c=442DB9>Cat</c> is up, all attacks move the enemy <c=action>1 space to the left</c>, or <c=action>+1 space</c> if they already move the enemy.\n<c=downside>All non-Cat&Amy attacks deal 1 less dmg."
+        },
+
+
+        "LovesProtection": {
+            "name": "LOVE'S PROTECTION",
+            "description": "Every 2 times you switch <c=442DB9>Cat & Amy</c> by playing one of their <c=cardtrait>pair</c> cards, gain 1 <c=status>TEMP SHIELD</c>."
+        },
+        "BeatEmUp": {
+            "name": "BEAT 'EM UP",
+            "description": "<c=status>(TEMP) STRAFE</c> and <c=status>(TEMP) REFLEX</c> trigger interchangeably."
+        },
+        "PerseveringPartnership": {
+            "name": "PERSEVERING PARTNERSHIP",
+            "description": "<c=status>OVERDRIVE</c> will not decay if you switched <c=442DB9>Cat & Amy</c> by playing one of their pair cards at least 3 times."
+        },
+        "LoveBomb": {
+            "name": "LOVE BOMB",
+            "description": "On pickup, add a <c=card>Repair Kit B</c> to your deck. Whenever you destroy a <c=drone>repair kit</c>, gain 1 <c=status>LOVERS</c>."
+        },
+        "FlamesOfPassion": {
+            "name": "FLAMES OF PASSION",
+            "description": "After you <c=downside>overheat</c>, gain 1 <c=status>LOVERS</c>."
+        },
+        "RainbowPride": {
+            "name": "RAINBOW PRIDE",
+            "description": "Every 5 times you switch <c=442DB9>Cat & Amy</c> by playing one of their pair cards, gain 1 <c=status>BOOST</c>."
+        },
+        "CrystalGirlies": {
+            "name": "CRYSTAL GIRLIES",
+            "description": "At the end of your turn, spend 2 <c=status>SHARD</c> to gain 1 <c=status>LOVERS</c> ."
+        },
+        "AmySandwich": {
+            "name": "AMY SANDWICH",
+            "description": "Once per combat, gain 1 <c=status>REFLEX</c> after the 10th <c=comp>CAT</c> card you play."
+        }
+    },
+    "card": {
+        "Grapple": {
+            "name": "Grapple"
+        },
+        "Toss": {
+            "name": "Toss"
+        },
+        "DoubleStrike": {
+            "name": "Double Strike"
+        },
+        "Backhand": {
+            "name": "Backhand"
+        },
+        "LeadOn": {
+            "name": "Lead On"
+        },
+        "Dropkick": {
+            "name": "Dropkick"
+        },
+        "Cruise": {
+            "name": "Cruise"
+        },
+        "BackBreaker": {
+            "name": "Back Breaker"
+        },
+        "CheckIn": {
+            "name": "Check In"
+        },
+        "BaitAndSwitch": {
+            "name": "Bait & Switch"
+        },
+        "ButchAndFemme": {
+            "name": "Butch & Femme"
+        },
+        "Commitment": {
+            "name": "Commitment"
+        },
+        "SmashAndGrab": {
+            "name": "Smash & Grab"
+        },
+        "YouHaul": {
+            "name": "You-Haul"
+        },
+        "Suplex": {
+            "name": "Suplex"
+        },
+        "Powerlifting": {
+            "name": "Powerlifting"
+        },
+        "DoubleSwitch": {
+            "name": "Double Switch"
+        },
+        "Kisses": {
+            "name": "Kisses"
+        },
+        "UndyingLove": {
+            "name": "Undying Love"
+        },
+        "TrackStarPartyQueen": {
+            "name": "Party Time"
+        },
+        "BootBlack": {
+            "name": "Boot Black"
+        },
+        "Kiss": {
+            "name": "Kiss"
+        },
+        "StarCrossedLovers": {
+            "name": "Starcrossed Lovers"
+        },
+        "CatAndAmyExe": {
+            "name": "Cat&Amy.EXE"
+        }
+    }
+}
