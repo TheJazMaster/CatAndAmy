@@ -1,8 +1,0 @@
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/bin/release/net8.0/CatAndAmy.deps.json
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/bin/release/net8.0/CatAndAmy.dll
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/release/net8.0/CatAndAmy.csproj.AssemblyReference.cache
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/release/net8.0/CatAndAmy.GeneratedMSBuildEditorConfig.editorconfig
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/release/net8.0/CatAndAmy.AssemblyInfoInputs.cache
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/release/net8.0/CatAndAmy.AssemblyInfo.cs
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/release/net8.0/CatAndAmy.csproj.CoreCompileInputs.cache
-/home/thejazmaster/Nickel/ModWorkingDirectory/CatAndAmy/obj/release/net8.0/CatAndAmy.dll
