@@ -240,13 +240,11 @@ internal sealed class PowerCouple : Artifact, IRegisterableArtifact
 	[HarmonyPostfix]
 	[HarmonyPatch(typeof(Card), nameof(Card.GetActionsOverridden))]
 	private static void Card_GetActionsOverriden_Postfix(State s, Combat c, Card __instance, List<CardAction> __result) {
-		foreach (Artifact item in s.EnumerateAllArtifacts()) {
-			if (item is PowerCouple && PairManager.GetGirlGlobal(s) != PairManager.Girl.AMY) {
-				foreach (CardAction action in __result) {
-					if (action is AAttack attack) {
-						if (attack.moveEnemy <= 0) attack.moveEnemy--;
-						else attack.moveEnemy++;
-					}
+		if (PairManager.GetGirlGlobal(s) != PairManager.Girl.AMY && s.EnumerateAllArtifacts().OfType<PowerCouple>().FirstOrDefault() != null) {
+			foreach (CardAction action in __result) {
+				if (action is AAttack attack) {
+					if (attack.moveEnemy <= 0) attack.moveEnemy--;
+					else attack.moveEnemy++;
 				}
 			}
 		}

@@ -14,7 +14,7 @@ public class AFlipGirlies : CardAction
     public override void Begin(G g, State s, Combat c)
     {
         timer = 0.5;
-		PairManager.GlobalFlip(g.state, g.state.route as Combat ?? DB.fakeCombat);
+		PairManager.GlobalFlip(s, c);
         Audio.Play(Event.Status_ShieldUp);
 
         if (PairManager.IsSwitchesOn(s)) return;

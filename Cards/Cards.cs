@@ -296,7 +296,7 @@ internal sealed class LeadOn : Card, IRegisterableCard, IHasCustomCardTraits
 
 	public override CardData GetData(State state) => new() {
 		cost = 0,
-		exhaust = upgrade == Upgrade.B,
+		exhaust = upgrade != Upgrade.A,
 		artTint = "ffffff",
 		art = GetGirl(state, this) switch {
 			Girl.AMY => Amy,
@@ -681,7 +681,8 @@ internal sealed class YouHaul : Card, IRegisterableCard, IHasCustomCardTraits
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state) => new HashSet<ICardTraitEntry> { PairTrait };
 
 	public override CardData GetData(State state) => new() {
-		cost = upgrade == Upgrade.B ? 1 : 2,
+		cost = upgrade == Upgrade.B ? 0 : 1,
+		exhaust = upgrade == Upgrade.B,
 		artTint = "ffffff",
 		art = GetGirl(state, this) switch {
 			Girl.AMY => Amy,
@@ -691,30 +692,25 @@ internal sealed class YouHaul : Card, IRegisterableCard, IHasCustomCardTraits
 	};
 
 	public override List<CardAction> GetActions(State s, Combat c) => MakeSet(s, this, [
-		new AAttack {
-			damage = GetDmg(s, 1),
-			moveEnemy = 1
+		new AMove {
+			dir = 1
 		},
-		new AAttack {
-			damage = GetDmg(s, upgrade == Upgrade.A ? 2 : upgrade == Upgrade.B ? 0 : 1),
-			moveEnemy = 1
+		new AMove {
+			dir = upgrade == Upgrade.A ? 2 : 1
 		},
-		new AAttack {
-			damage = GetDmg(s, upgrade == Upgrade.A ? 2 : 1),
-			moveEnemy = 1
-		}
+		new AMove {
+			dir = upgrade == Upgrade.A ? 2 : 1
+		},
 	], [
 		new AStatus {
 			status = Status.autopilot,
-			statusAmount = 2,
+			statusAmount = 1,
 			targetPlayer = true
 		},
-		new AStatus {
-			status = Status.evade,
-			statusAmount = upgrade == Upgrade.A ? 3 : upgrade == Upgrade.B ? 1 : 2,
-			targetPlayer = true
-		}
-	]);
+		new ADrawCard {
+			count = upgrade == Upgrade.A ? 3 : 2
+        }
+    ]);
 }
 
 internal sealed class Suplex : Card, IRegisterableCard, IHasCustomCardTraits

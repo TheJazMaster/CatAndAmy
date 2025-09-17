@@ -18,7 +18,7 @@ public static class PairManager
     private static IModCards CardsHelper => Instance.Helper.Content.Cards;
     private static IModData ModData => Instance.Helper.ModData;
 
-    private static readonly string GlobalGirlKey = "GlobalGirl";
+    internal static readonly string GlobalGirlKey = "GlobalGirl";
     internal static readonly string CardGirlSwapKey = "GirlSwap";
 
     internal static ICardTraitEntry PairTrait { get; private set; } = null!;
@@ -63,6 +63,8 @@ public static class PairManager
 
         ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Combat combat, Card card) =>
         {
+            ModData.SetModData(state.storyVars, GlobalGirlKey, GetGirlGlobal(state));
+
             if (CardsHelper.IsCardTraitActive(state, card, PairTrait)) {
                 combat.Queue(new AFlipGirlies());
                 if (state.ship.Get(ModEntry.Instance.LoversStatus) > 0) {
@@ -170,5 +172,53 @@ public static class PairManager
         card.flipAnim = 0;
         card.flopAnim = to ? 1 : -1;
         card.OnFlip(g);
+    }
+
+
+
+    internal static readonly string JustReturnedFromMissingKey = "JustReturnedFromMissing";
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(StoryNode), nameof(StoryNode.Filter))]
+    private static void StoryNode_Filter_Prefix(StoryNode n, State s, StorySearch ctx, ref bool __result) {
+        if (!__result) return;
+        
+        {
+            if (ModData.TryGetModData(n, GlobalGirlKey, out Girl data) && ModData.TryGetModData(s.storyVars, GlobalGirlKey, out Girl value) && data != value)
+            {
+                __result = false;
+                return;
+            }
+        }
+        {
+            if (ModData.TryGetModData(n, GlobalGirlKey, out bool data) && ModData.TryGetModData(s.storyVars, JustReturnedFromMissingKey, out bool value) && data != value)
+            {
+                __result = false;
+                return;
+            }
+        }
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(StoryVars), nameof(StoryVars.ResetAfterCombatLine))]
+	private static void StoryVars_ResetAfterCombatLine_Postfix(StoryVars __instance) {
+		ModData.RemoveModData(__instance, JustReturnedFromMissingKey);
+        ModData.RemoveModData(__instance, GlobalGirlKey);
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(AStatus), nameof(AStatus.Begin))]
+    private static void AStatus_Begin_Prefix(AStatus __instance, State s, ref int __state)
+		=> __state = __instance.targetPlayer ? s.ship.Get(__instance.status) : 0;
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(AStatus), nameof(AStatus.Begin))]
+    private static void AStatus_Begin_Postfix(AStatus __instance, State s, Combat c, ref int __state)
+    {
+        if (!__instance.targetPlayer)
+            return;
+
+        if (__instance.status == ModEntry.Instance.CatAndAmyCharacter.MissingStatus.Status && __state > 0 && s.ship.Get(ModEntry.Instance.CatAndAmyCharacter.MissingStatus.Status) <= 0)
+            s.storyVars.ApplyModData(JustReturnedFromMissingKey, true);
     }
 }

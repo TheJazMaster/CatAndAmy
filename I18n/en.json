@@ -4,15 +4,16 @@
         "description": [
             "<c=442DB9>CAT & AMY</c>",
             "Two lovers lost in space. Their <c=keyword>pair</c> cards switch between top and bottom after each play, and specialize in <c=keyword>ship movement, dealing damage, and moving the enemy</c>."
-        ]
+        ],
+        "questionmark": "???"
     },
     "trait": {
         "pair": {
             "name": "Pair card",
             "description": {
                 "both": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played.",
-                "top": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=442DB9>Cat</c> is currently up.",
-                "bottom": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=442DB9>Amy</c> is currently up."
+                "top": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=4530bb>Cat</c> is currently up.",
+                "bottom": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=fc9ee9>Amy</c> is currently up."
             }
         }
     },

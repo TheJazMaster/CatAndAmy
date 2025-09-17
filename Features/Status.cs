@@ -82,8 +82,8 @@ public class StatusManager : IHook, IKokoroApi.IV2.IStatusRenderingApi.IHook
         Ship movingShip = __instance.targetPlayer ? s.ship : c.otherShip;
         Ship oppositeShip = __instance.targetPlayer ? c.otherShip : s.ship;
 
-        int mStrafe = movingShip.Get(Status.strafe);
-        int mTempStrafe = movingShip.Get(ModEntry.Instance.TempStrafeStatus);
+        // int mStrafe = movingShip.Get(Status.strafe);
+        // int mTempStrafe = movingShip.Get(ModEntry.Instance.TempStrafeStatus);
         int mReflex = movingShip.Get(ModEntry.Instance.ReflexStatus);
         int mTempReflex = movingShip.Get(ModEntry.Instance.TempReflexStatus);
         

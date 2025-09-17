@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TheJazMaster.CatAndAmy.Artifacts;
+using TheJazMaster.CatAndAmy.Backgrounds;
 using TheJazMaster.CatAndAmy.Cards;
 using TheJazMaster.CatAndAmy.Features;
 
@@ -21,12 +22,17 @@ public sealed partial class ModEntry : SimpleMod {
 	internal IKokoroApi.IV2 KokoroApi { get; }
 	internal IMoreDifficultiesApi? MoreDifficultiesApi { get; }
 	internal IDuoArtifactsApi? DuoArtifactsApi { get; }
+    internal LocalDB LocalDB { get; private set; } = null!;
+
+    public const string AMY_COLOR = "fc9ee9";
+	public const string CAT_COLOR = "4530bb";
 
 
-	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
+    internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
     internal IPlayableCharacterEntryV2 CatAndAmyCharacter { get; }
+	internal INonPlayableCharacterEntryV2 QuestionMarkCharacter { get; }
 
     internal IDeckEntry CatAndAmyDeck { get; }
 
@@ -48,7 +54,9 @@ public sealed partial class ModEntry : SimpleMod {
     internal Spr PairTopIcon { get; }
     internal Spr PairBottomIcon { get; }
 	internal Spr PairHandIcon { get; }
-	internal Spr Test { get; }
+	
+	internal Spr RhodeBG { get; }
+	internal Spr RhodeFG { get; }
 
 
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
@@ -260,6 +268,9 @@ public sealed partial class ModEntry : SimpleMod {
 		PairBottomIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Icons/PairBottom.png")).Sprite;
 		PairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Icons/PairHand.png")).Sprite;
 
+		RhodeBG = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Memories/RhodeBG.png")).Sprite;
+		RhodeFG = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Memories/RhodeFG.png")).Sprite;
+
 		CatAndAmyDeck = helper.Content.Decks.RegisterDeck("CatAndAmy", new()
 		{
 			Definition = new() { color = new Color("442DB9"), titleColor = Colors.white },
@@ -295,7 +306,18 @@ public sealed partial class ModEntry : SimpleMod {
 			NeutralAnimation = animations["neutral"],
 			MiniAnimation = animations["mini"]
 		});
-        // example line: "I'm Cat!\n<a=ca>And I'm Amy!\n<a=ab>We're a team!"
+        // example line: "I'm Cat!\n<a=a>And I'm Amy!\n<a=b>We're a team!"
+		QuestionMarkCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("QuestionMark", new NonPlayableCharacterConfigurationV2()
+		{
+			CharacterType = "questionmark",
+			Name = AnyLocalizations.Bind(["character", "questionmark"]).Localize
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = QuestionMarkCharacter.CharacterType,
+			LoopTag = "neutral",
+			Frames = animations["painglowglitch"].Frames
+		});
 
         helper.Content.Cards.OnGetDynamicInnateCardTraitOverrides += (_, data) => {
 			State state = data.State;
@@ -303,6 +325,29 @@ public sealed partial class ModEntry : SimpleMod {
 				data.SetOverride(PairManager.FloppableTrait, true);
 			}
 		};
+
+		Vault.charsWithLore.Add(CatAndAmyDeck.Deck);
+		BGRunWin.charFullBodySprites.Add(CatAndAmyDeck.Deck, helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Memories/fullBody.png")).Sprite);
+		
+        StoryDialogue.Initialize(package, helper);
+        CombatDialogue.Initialize(package, helper);
+		EventDialogue.Initialize(package, helper);
+
+        helper.Events.OnModLoadPhaseFinished += (_, phase) =>
+        {
+            if (phase == ModLoadPhase.AfterDbInit)
+            {
+            	LocalDB = new(helper, package);
+                DB.backgrounds.Add("CatAndAmy_BGRhode", typeof(BGRhode));
+            }
+        };
+		helper.Events.OnLoadStringsForLocale += (_, thing) =>
+        {
+            foreach (KeyValuePair<string, string> entry in LocalDB.GetLocalizationResults())
+            {
+                thing.Localizations[entry.Key] = entry.Value;
+            }
+        };
     }
 
 	private Dictionary<string, CharacterAnimationConfigurationV2> RegisterAllAnimations() {
