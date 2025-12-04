@@ -25,7 +25,7 @@ public sealed partial class ModEntry : SimpleMod {
     internal LocalDB LocalDB { get; private set; } = null!;
 
     public const string AMY_COLOR = "fc9ee9";
-	public const string CAT_COLOR = "4530bb";
+	public const string CAT_COLOR = "4e3ed1";//"4530bb";
 
 
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
@@ -43,8 +43,8 @@ public sealed partial class ModEntry : SimpleMod {
 	internal Status KissesAStatus { get; }
 	internal Status ReflexStatus { get; }
 	internal Status TempReflexStatus { get; }
-	internal Status TempStrafeStatus { get; }
-	internal Status LeadOnStatus { get; }
+    internal Status TempStrafeStatus => KokoroApi.TempStrafeStatus.Status;
+    internal Status LeadOnStatus { get; }
 
     internal Spr GirliesFrame { get; }
     internal Spr GirliesCardBorder { get; }
@@ -187,19 +187,6 @@ public sealed partial class ModEntry : SimpleMod {
 			Description = AnyLocalizations.Bind(["status", "TempReflex", "description"]).Localize
 		}).Status;
 
-        TempStrafeStatus = helper.Content.Statuses.RegisterStatus("TempStrafe", new()
-		{
-			Definition = new()
-			{
-				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Icons/TempStrafe.png")).Sprite,
-				color = new("E517C6"),
-				isGood = true,
-				affectedByTimestop = true
-			},
-			Name = AnyLocalizations.Bind(["status", "TempStrafe", "name"]).Localize,
-			Description = AnyLocalizations.Bind(["status", "TempStrafe", "description"]).Localize
-		}).Status;
-
         KissesStatus = helper.Content.Statuses.RegisterStatus("Kisses", new()
 		{
 			Definition = new()
@@ -291,8 +278,6 @@ public sealed partial class ModEntry : SimpleMod {
             }
         });
 
-		Harmony.PatchAll();
-
         Dictionary<string, CharacterAnimationConfigurationV2> animations = RegisterAllAnimations();
         CatAndAmyCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("CatAndAmy", new()
 		{
@@ -348,6 +333,8 @@ public sealed partial class ModEntry : SimpleMod {
                 thing.Localizations[entry.Key] = entry.Value;
             }
         };
+
+		Harmony.PatchAll();
     }
 
 	private Dictionary<string, CharacterAnimationConfigurationV2> RegisterAllAnimations() {
