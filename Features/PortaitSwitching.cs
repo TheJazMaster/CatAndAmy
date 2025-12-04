@@ -115,12 +115,18 @@ public static partial class PortraitSwitchingManager {
         for (int i = 0; i < gp.glyphs.Count; i++) {
             Glyph g = gp.glyphs[i];
             if (g.color != 0 && lastColor != g.color) {
-                glyphs.Add((i, g.color switch
-                {
-                    4294745833 => Girl.AMY,
-                    4282724539 => Girl.CAT,
-                    _ => Girl.BOTH
-                }));
+                if (g.color == AmyColorInt)
+                    glyphs.Add((i, Girl.AMY));
+                else if (g.color == CatColorInt)
+                    glyphs.Add((i, Girl.CAT));
+                else
+                    glyphs.Add((i, Girl.BOTH));
+                // glyphs.Add((i, g.color switch
+                // {
+                //     4294745833 => Girl.AMY,
+                //     4282724539 => Girl.CAT,
+                //     _ => Girl.BOTH
+                // }));
                 lastColor = g.color;
             }
         }
