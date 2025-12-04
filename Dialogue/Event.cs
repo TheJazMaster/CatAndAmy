@@ -18,9 +18,9 @@ static class EventDialogue {
                 once = true,
                 priority = true,
                 dialogue = [
-                    new("cleo", "Woah! You two look different! Where are you from?"),
+                    new("cleo", "Woah! You two look different! Where are you from?", true),
                     new("cna", "Earth."),
-                    new("cleo", "Wild!"),
+                    new("cleo", "Wild!", true),
                     new(new Jump { key = "NewShop" })
                 ]
             }},
@@ -30,7 +30,7 @@ static class EventDialogue {
                 allPresent = [ "cna" ],
                 bg = "BGShop",
                 dialogue = [
-                    new("cleo", "Meowdy!"),
+                    new("cleo", "Meowdy!", true),
                     new("cna", "blushingv2", "<a=c>Look, Amy! Another cat girl! You're right at home here!"),
                     new(new Jump { key = "NewShop" })
                 ]
@@ -41,7 +41,7 @@ static class EventDialogue {
                 allPresent = [ "cna" ],
                 bg = "BGShop",
                 dialogue = [
-                    new("cleo", "Meowdy!"),
+                    new("cleo", "Meowdy!", true),
                     new("cna", "affection", "Meowdy!"),
                     new("cat", "squint", "Not another one."),
                     new(new Jump { key = "NewShop" })
@@ -53,7 +53,7 @@ static class EventDialogue {
                 allPresent = [ "cna" ],
                 bg = "BGShop",
                 dialogue = [
-                    new("cleo", "Welcome back, Earthlings!"),
+                    new("cleo", "Welcome back, Earthlings!", true),
                     new("cna", "Thanks!"),
                     new(new Jump { key = "NewShop" })
                 ]
@@ -64,7 +64,7 @@ static class EventDialogue {
                 allPresent = [ "cna" ],
                 bg = "BGShop",
                 dialogue = [
-                    new("cleo", "Heya, you two!"),
+                    new("cleo", "Heya, you two!", true),
                     new("cna", "Hi!"),
                     new(new Jump { key = "NewShop" })
                 ]

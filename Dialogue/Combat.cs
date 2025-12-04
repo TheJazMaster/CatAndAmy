@@ -147,6 +147,12 @@ static class CombatDialogue {
                     new([
                         new("cna", "pumped", "Yes!"),
                         new("cna", "pumped", "Bull's eye!"),
+                        new("cna", "pumped", "Yes!"),
+                        new("cna", "pumped", "Bull's eye!"),
+                        new("cna", "pumped", "Yes!"),
+                        new("cna", "pumped", "Bull's eye!"),
+                        new("cna", "pumped", "Yes!"),
+                        new("cna", "pumped", "Bull's eye!"),
                         new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
                         new("cna", "pumped", "<a=a>Wahoo! It's on!\n<a=c>Dork."),
                     ]),
