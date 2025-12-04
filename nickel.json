@@ -1,13 +1,13 @@
 {
     "UniqueName": "TheJazMaster.CatAndAmy",
-    "Version": "0.4.1",
+    "Version": "0.4.3",
     "RequiredApiVersion": "0.1.0",
     "EntryPointAssembly": "CatAndAmy.dll",
     "LoadPhase": "AfterDbInit",
     "Dependencies": [
         {
             "UniqueName": "Shockah.Kokoro",
-            "Version": "1.2.0"
+            "Version": "2.12.0"
         },
         {
             "UniqueName": "TheJazMaster.MoreDifficulties",
