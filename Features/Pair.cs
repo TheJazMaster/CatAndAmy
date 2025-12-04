@@ -41,7 +41,7 @@ public static class PairManager
                 new GlossaryTooltip($"trait.{MethodBase.GetCurrentMethod()!.DeclaringType!.Namespace!}::Pair")
 				{
 					Icon = Instance.PairIcon,
-					TitleColor = Colors.action,
+					TitleColor = Colors.cardtrait,
 					Title = ModEntry.Instance.Localizations.Localize(["trait", "pair", "name"]),
 					Description = ModEntry.Instance.Localizations.Localize(["trait", "pair", "description", 
                         s.route is Combat c && c != DB.fakeCombat && !BothActive(s) ? GetGirlGlobal(s) switch {
@@ -221,4 +221,32 @@ public static class PairManager
         if (__instance.status == ModEntry.Instance.CatAndAmyCharacter.MissingStatus.Status && __state > 0 && s.ship.Get(ModEntry.Instance.CatAndAmyCharacter.MissingStatus.Status) <= 0)
             s.storyVars.ApplyModData(JustReturnedFromMissingKey, true);
     }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(CardReward), nameof(CardReward.Render))]
+    private static void CardReward_Render_Prefix(CardReward __instance, G g)
+    {
+        
+		if (__instance.flipFloppableCardsTimer > 3.0)
+		{
+			foreach (Card card in __instance.cards)
+			{
+				if (IsPair(card, DB.fakeState) && !card.isForeground)
+				{
+					card.flipped = !card.flipped;
+					card.flipAnim = 1.0;
+                    ModData.SetModData(card, CardGirlSwapKey, !IsGirlSwapped(card));
+				}
+			}
+		}
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(CardReward), nameof(CardReward.TakeCard))]
+    private static void CardReward_TakeCard_Postfix(CardReward __instance, G g, Card card)
+    {
+        ModData.RemoveModData(card, CardGirlSwapKey);
+    }
+
+
 }
