@@ -110,7 +110,7 @@ public static class PairManager
 
     public static Girl GetGirlNotBoth(State s, Card card) {
         Girl girl = GetGirlGlobal(s);
-        return IsSwitchesOn(s) && IsGirlSwapped(card) ? GetOppositeGirl(girl) : girl;
+        return (IsSwitchesOn(s) || s == DB.fakeState) && IsGirlSwapped(card) ? GetOppositeGirl(girl) : girl;
     }
 
     public static Girl GetGirlGlobal(State s) {
@@ -233,7 +233,6 @@ public static class PairManager
 			{
 				if (IsPair(card, DB.fakeState) && !card.isForeground)
 				{
-					card.flipped = !card.flipped;
 					card.flipAnim = 1.0;
                     ModData.SetModData(card, CardGirlSwapKey, !IsGirlSwapped(card));
 				}
