@@ -870,7 +870,7 @@ internal sealed class DoubleSwitch : Card, IRegisterableCard
 internal sealed class Kisses : Card, IRegisterableCard
 {
 	public static void Register(IModHelper helper, IPluginPackage<IModManifest> package) {
-		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.rare, helper, package, out _);
+		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.rare, helper, package, out _, null, true);
 	}
 
 	public override CardData GetData(State state) => new() {
