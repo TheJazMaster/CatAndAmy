@@ -22,7 +22,7 @@ internal interface IRegisterableCard
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", name, "name"]).Localize
 		});
 	}
-	static ICardEntry Register(Type type, Rarity rarity, IModHelper helper, IPluginPackage<IModManifest> package, out string name, out Spr amySprite, out Spr catSprite, Deck? deck = null) {
+	static ICardEntry Register(Type type, Rarity rarity, IModHelper helper, IPluginPackage<IModManifest> package, out string name, out Spr amySprite, out Spr catSprite, Deck? deck = null, bool dontOffer = false) {
 		name = type.Name[..^4];
 		amySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Sprites/Cards/{name}Amy.png")).Sprite;
 		catSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Sprites/Cards/{name}Cat.png")).Sprite;
@@ -33,13 +33,14 @@ internal interface IRegisterableCard
 			{
 				deck = deck ?? ModEntry.Instance.CatAndAmyDeck.Deck,
 				rarity = rarity,
-				upgradesTo = [Upgrade.A, Upgrade.B]
+				upgradesTo = [Upgrade.A, Upgrade.B],
+				dontOffer = dontOffer
 			},
 			Art = amySprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", name, "name"]).Localize
 		});
 	}
-	static ICardEntry Register(Type type, Rarity rarity, IModHelper helper, IPluginPackage<IModManifest> package, out string name, out Spr bothSprite, out Spr amySprite, out Spr catSprite, Deck? deck = null) {
+	static ICardEntry Register(Type type, Rarity rarity, IModHelper helper, IPluginPackage<IModManifest> package, out string name, out Spr bothSprite, out Spr amySprite, out Spr catSprite, Deck? deck = null, bool dontOffer = false) {
 		name = type.Name;
 		bothSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Sprites/Cards/{name}Duo.png")).Sprite;
 		amySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Sprites/Cards/{name}Amy.png")).Sprite;
@@ -51,7 +52,8 @@ internal interface IRegisterableCard
 			{
 				deck = deck ?? ModEntry.Instance.CatAndAmyDeck.Deck,
 				rarity = rarity,
-				upgradesTo = [Upgrade.A, Upgrade.B]
+				upgradesTo = [Upgrade.A, Upgrade.B],
+				dontOffer = dontOffer
 			},
 			Art = bothSprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", name, "name"]).Localize
