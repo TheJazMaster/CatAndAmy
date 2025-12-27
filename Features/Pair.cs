@@ -44,11 +44,11 @@ public static class PairManager
 					TitleColor = Colors.cardtrait,
 					Title = ModEntry.Instance.Localizations.Localize(["trait", "pair", "name"]),
 					Description = ModEntry.Instance.Localizations.Localize(["trait", "pair", "description", 
-                        s.route is Combat c && c != DB.fakeCombat && !BothActive(s) ? GetGirlGlobal(s) switch {
-                            Girl.CAT => "top",
-                            Girl.AMY => "bottom",
+                        s.route is Combat c && c != DB.fakeCombat ? GetGirlGlobal(s) switch {
+                            Girl.CAT => "bottom",
+                            Girl.AMY => "top",
                             _ => throw new NotImplementedException(),
-                        } : "both"]),
+                        } : "basic"]),
 				}
             ]
         });
