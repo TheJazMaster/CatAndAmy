@@ -15,7 +15,7 @@ internal sealed class Kiss : Card, IRegisterableCard, IHasCustomCardTraits
 	private static Spr Amy;
 	private static Spr Both;
 	public static void Register(IModHelper helper, IPluginPackage<IModManifest> package) {
-		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.common, helper, package, out _, out Both, out Amy, out Cat);
+		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.common, helper, package, out _, out Both, out Amy, out Cat, null, true);
 	}
 
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state) => new HashSet<ICardTraitEntry> { PairTrait };
@@ -870,7 +870,7 @@ internal sealed class DoubleSwitch : Card, IRegisterableCard
 internal sealed class Kisses : Card, IRegisterableCard
 {
 	public static void Register(IModHelper helper, IPluginPackage<IModManifest> package) {
-		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.rare, helper, package, out _, null, true);
+		IRegisterableCard.Register(MethodBase.GetCurrentMethod()!.DeclaringType!, Rarity.rare, helper, package, out _);
 	}
 
 	public override CardData GetData(State state) => new() {
