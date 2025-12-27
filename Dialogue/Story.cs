@@ -59,8 +59,8 @@ static class StoryDialogue {
                 priority = true,
                 once = true,
                 dialogue = [
-                    new("cna", "squint", "So, CAT, we're stuck in a time loop, right?", true),
-                    new("cat", "Yes."),
+                    new("cna", "squint", "So, CAT, we're stuck in a time loop, right?"),
+                    new("cat", "Yes.", true),
                     new("cna", "squint", "<a=c>And presumably we're all trying to break out, right?\n<a=a>That's why we're picking so many fights?"),
                     new("cat", "Technically, our opponents are picking fights with us.", true),
                     new("cat", "Our target is the Cobalt. That's where I was created, then stationed, along with Dizzy, Max, Peri, Isaac, and kinda Riggs.", true),
