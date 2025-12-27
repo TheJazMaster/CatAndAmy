@@ -82,8 +82,6 @@ public static class PairManager
     public static bool BothActive(State s) => s.ship.Get(ModEntry.Instance.LoversStatus) > 0;
 
     public static void GlobalFlip(State s, Combat c) {
-        if (IsLoversOn(s)) return;
-
         ModData.SetModData(c, GlobalGirlKey, ModData.GetModDataOrDefault(c, GlobalGirlKey, Girl.AMY) == Girl.AMY ? Girl.CAT : Girl.AMY);
 
         foreach (Artifact item in s.EnumerateAllArtifacts()) {

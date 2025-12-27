@@ -17,8 +17,6 @@ public class AFlipGirlies : CardAction
 		PairManager.GlobalFlip(s, c);
         Audio.Play(Event.Status_ShieldUp);
 
-        if (PairManager.IsSwitchesOn(s)) return;
-
         bool isCat = PairManager.GetGirlGlobal(s) == PairManager.Girl.CAT;
         foreach (Card card in c.hand) {
 			if (CardsHelper.IsCardTraitActive(s, card, PairManager.PairTrait)) {

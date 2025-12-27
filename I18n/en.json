@@ -12,8 +12,8 @@
             "name": "Pair card",
             "description": {
                 "basic": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played.",
-                "top": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=4530bb>Cat</c> is currently up.",
-                "bottom": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=fc9ee9>Amy</c> is currently up."
+                "bottom": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=4530bb>Cat</c> is currently up.",
+                "top": "This card has two separate sets of actions that flop after a <c=cardtrait>pair</c> card is played. <c=fc9ee9>Amy</c> is currently up."
             }
         }
     },
