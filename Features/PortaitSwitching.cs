@@ -63,7 +63,7 @@ public static partial class PortraitSwitchingManager {
                 {
                     if (position != 0 && !DB.currentLocale.isHighRes) {
                         __instance.progress = position;
-                        ModData.SetModData(__instance, ShoutPauseKey, 0.3);
+                        ModData.SetModData(__instance, ShoutPauseKey, 0.4);
                     }
                     glyphs.RemoveAt(i);
                     break;
