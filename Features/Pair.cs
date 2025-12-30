@@ -31,7 +31,7 @@ public static class PairManager
 
     internal static void Initialize(IPluginPackage<IModManifest> package, IModHelper helper) {
         PairTrait = CardsHelper.RegisterTrait("Pair", new() {
-            Icon = (s, _) => s.route is Combat c && c != DB.fakeCombat && !BothActive(s) ? GetGirlGlobal(s) switch {
+            Icon = (s, _) => s.route is Combat c && c != DB.fakeCombat ? GetGirlGlobal(s) switch {
 				Girl.AMY => ModEntry.Instance.PairTopIcon,
 				Girl.CAT => ModEntry.Instance.PairBottomIcon,
 				_ => throw new NotImplementedException(),
