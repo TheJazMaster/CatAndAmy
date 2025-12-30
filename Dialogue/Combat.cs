@@ -326,13 +326,6 @@ static class CombatDialogue {
                     new(EMod.countFromStart, 0, "cna", "annoyed", "<a=c>I'm sweating my butt off."),
                 ]
             }},
-            {"mezz_Ilya_WeJustGainedHeat_0", new(){
-                edit = [
-                    new(EMod.countFromStart, 0, "cna", "annoyed", "Whoever's responsible for the sudden temperature rise, you'd better be keeping an eye on it!"),
-                    new(EMod.countFromStart, 0, "cna", "squint", "<a=a>Should the consoles feel this warm to touch?"),
-                    new(EMod.countFromStart, 0, "cna", "annoyed", "<a=c>I'm sweating my butt off."),
-                ]
-            }},
             {"CatAndAmy_GainedHeat", new(){
                 type = NodeType.combat,
                 lastTurnPlayerStatuses = [
@@ -418,5 +411,18 @@ static class CombatDialogue {
                 ]
             }},
         });
+
+        if (ModEntry.Instance.Helper.ModRegistry.LoadedMods.ContainsKey("Mezz.TwosCompany")) {
+            LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
+            {
+                {"mezz_Ilya_WeJustGainedHeat_0", new(){
+                    edit = [
+                        new(EMod.countFromStart, 0, "cna", "annoyed", "Whoever's responsible for the sudden temperature rise, you'd better be keeping an eye on it!"),
+                        new(EMod.countFromStart, 0, "cna", "squint", "<a=a>Should the consoles feel this warm to touch?"),
+                        new(EMod.countFromStart, 0, "cna", "annoyed", "<a=c>I'm sweating my butt off."),
+                    ]
+                }}
+            });
+        }
     }
 }
