@@ -47,11 +47,11 @@
         },
         "Kisses": {
             "name": "Kisses",
-            "description": "At the start of your turn, add <c=keyword>{0}</c> <c=card>Kiss</c>es to your hand."
+            "description": "At the start of your turn, add <c=keyword>{0}</c> <c=card>Kisses</c> to your hand."
         },
         "KissesA": {
             "name": "Kisses (A)",
-            "description": "At the start of your turn, add <c=keyword>{0}</c> <c=card>Kiss A</c>s to your hand."
+            "description": "At the start of your turn, add <c=keyword>{0}</c> <c=card>Kiss As</c> to your hand."
         },
         "Reflex": {
             "name": "Reflex",
