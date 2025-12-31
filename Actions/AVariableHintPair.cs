@@ -32,7 +32,7 @@ public class AVariableHintPair : AVariableHint
             
             parentheses = stringHandler.ToStringAndClear();
         }
-        list.Add(new TTText(ModEntry.Instance.Localizations.Localize(["action", "vairableHintPair", "description"], new { Amount = parentheses })));
+        list.Add(new TTText(ModEntry.Instance.Localizations.Localize(["action", "variableHintPair", "description"], new { Amount = parentheses })));
         return list;
 	}
 }
