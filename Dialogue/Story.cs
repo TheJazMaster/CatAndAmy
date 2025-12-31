@@ -244,7 +244,7 @@ static class StoryDialogue {
                 type = NodeType.@event,
                 lookup = [$"runWin_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}"],
                 bg = "BGRunWin",
-                introDelay = false,
+                once = true,
                 dialogue = [
                     new(new Wait { secs = 3 }),
                     new("cna", "neutralv2", "<a=a>Whoa. This is unexpected."),
@@ -262,9 +262,9 @@ static class StoryDialogue {
             {$"RunWinWho_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}_2", new(){
                 type = NodeType.@event,
                 lookup = [$"runWin_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}"],
-                requiredScenes = ["RunWinWho_CatAndAmy_1"],
+                requiredScenes = [$"RunWinWho_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}_1"],
                 bg = "BGRunWin",
-                allPresent = ["cna"],
+                once = true,
                 dialogue = [
                     new(new Wait { secs = 3 }),
                     new("void", "Welcome back.", true),
@@ -279,9 +279,9 @@ static class StoryDialogue {
             {$"RunWinWho_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}_3", new(){
                 type = NodeType.@event,
                 lookup = [$"runWin_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}"],
-                requiredScenes = ["RunWinWho_CatAndAmy_2"],
+                requiredScenes = [$"RunWinWho_{ModEntry.Instance.CatAndAmyDeck.Deck.Key()}_2"],
                 bg = "BGRunWin",
-                allPresent = ["cna"],
+                once = true,
                 dialogue = [
                     new(new Wait { secs = 3 }),
                     new("cna", "neutralv2", "<a=c>So, my bracelet. Is that what you were talking about? The 'piece of you'?"),
