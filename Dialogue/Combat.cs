@@ -142,15 +142,11 @@ static class CombatDialogue {
             {"SomeoneJustHit_CatAndAmy", new DialogueMachine(){
                 type = NodeType.combat,
                 playerShotJustHit = true,
+                minDamageDealtToEnemyThisAction = 6,
                 allPresent = ["cna"],
+                oncePerCombat = true,
                 dialogue = [
                     new([
-                        new("cna", "pumped", "Yes!"),
-                        new("cna", "pumped", "Bull's eye!"),
-                        new("cna", "pumped", "Yes!"),
-                        new("cna", "pumped", "Bull's eye!"),
-                        new("cna", "pumped", "Yes!"),
-                        new("cna", "pumped", "Bull's eye!"),
                         new("cna", "pumped", "Yes!"),
                         new("cna", "pumped", "Bull's eye!"),
                         new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
@@ -358,7 +354,7 @@ static class CombatDialogue {
                 ],
                 dialogue = [
                     new("cna", "annoyed", "<a=c>Drake! If you don't keep this heat under control I'll send Amy after you!"),
-                    new("drake", "smug", "Oh no, whatever will I do?"),
+                    new("drake", "sly", "Oh no, whatever will I do?"),
                 ]
             }},
             {"CatAndAmy_GainedHeat_Drake_1", new(){
@@ -386,7 +382,7 @@ static class CombatDialogue {
                 ],
                 dialogue = [
                     new("cna", "annoyed", "<a=a>Drake, if this heat becomes a problem I will put you in a choke hold."),
-                    new("drake", "smug", "Is that a threat or a promise?"),
+                    new("drake", "sly", "Is that a threat or a promise?"),
                 ]
             }},
             {"CatAndAmy_AboutToDieAndLoop", new(){
