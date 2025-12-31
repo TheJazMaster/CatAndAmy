@@ -25,7 +25,7 @@ public sealed partial class ModEntry : SimpleMod {
     internal LocalDB LocalDB { get; private set; } = null!;
 
     public const string AMY_COLOR = "fc9ee9";
-	public const string CAT_COLOR = "4e3ed1";//"4530bb";
+	public const string CAT_COLOR = "5848dc";//"4e3ed1";//"4530bb"//"442DB9"orig;
 
 
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
@@ -260,7 +260,7 @@ public sealed partial class ModEntry : SimpleMod {
 
 		CatAndAmyDeck = helper.Content.Decks.RegisterDeck("CatAndAmy", new()
 		{
-			Definition = new() { color = new Color("442DB9"), titleColor = Colors.white },
+			Definition = new() { color = new Color("5848dc"), titleColor = Colors.white },
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = GirliesCardBorder,
 			Name = AnyLocalizations.Bind(["character", "name"]).Localize
