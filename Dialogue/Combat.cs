@@ -39,6 +39,24 @@ static class CombatDialogue {
                         new("cna", "pumpedv2", "<a=c>Ha! Eat it!\n<a=a>Cat, you are so hot."),
                         new("cna", "blushing", "<a=a>Heck yeah!\n<a=c>Amy, I will never stop swooning for you."),
                     ]),
+                ]
+            }.ApplyModData(PairManager.GlobalGirlKey, PairManager.Girl.CAT)},
+            {"CatJustHitPDA", new DialogueMachine(){
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                allPresent = ["cna"],
+                whoDidThat = CnA,
+                oncePerCombatTags = ["CnA_PDA"],
+                dialogue = [
+                    new([
+                        new("cna", "pumpedv2", "<a=c>Ha! Eat it!\n<a=a>Cat, you are so hot."),
+                        new("cna", "blushing", "<a=a>Heck yeah!\n<a=c>Amy, I will never stop swooning for you."),
+                        new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
+                        new("cna", "pumped", "<a=a>Wahoo! It's on!\n<a=c>Dork."),
+
+                        new("cna", "pumpedv2", "<a=a>Nice shot, babe!\n<a=c>Thanks!"),
+                        new("cna", "agreeingv2", "<a=a>Good one, babe.\n<a=c>Thanks.")
+                    ]),
                     new([
                         new("drake", "mad", "Uuuuuugh! GET A ROOM!"),
                         new("drake", "mad", "Ugh. Get a room!"),
@@ -98,6 +116,80 @@ static class CombatDialogue {
                     ])
                 ]
             }.ApplyModData(PairManager.GlobalGirlKey, PairManager.Girl.CAT)},
+            {"AmyJustHitPDA", new DialogueMachine(){
+                type = NodeType.combat,
+                playerShotJustHit = true,
+                allPresent = ["cna"],
+                whoDidThat = CnA,
+                oncePerCombatTags = ["CnA_PDA"],
+                dialogue = [
+                    new([
+                        new("cna", "pumpedv2", "<a=c>Ha! Eat it!\n<a=a>Cat, you are so hot."),
+                        new("cna", "blushing", "<a=a>Heck yeah!\n<a=c>Amy, I will never stop swooning for you."),
+                        new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
+                        new("cna", "pumped", "<a=a>Wahoo! It's on!\n<a=c>Dork."),
+
+                        new("cna", "neutralv2", "<a=c>Good shot, babe.\n<a=a>Thanks."),
+                    ]),
+                    new([
+                        new("drake", "mad", "Uuuuuugh! GET A ROOM!"),
+                        new("drake", "mad", "Ugh. Get a room!"),
+                        new("drake", "mad", "Ugh. Keep it to yourselves!"),
+                        new("drake", "mad", "Shut up."),
+                        new("drake", "mad", "Will you two shut up!"),
+                        new("drake", "mad", "We get it! You're in love! SHUT IT!"),
+                        new("drake", "mad", "Ugh. I'm gonna puke."),
+                        new("drake", "mad", "I'm gonna be sick."),
+                        new("drake", "mad", "..."),
+                        new("drake", "mad", "Next time I find you two when I'm in the Fireball..."),
+                        new("drake", "mad", "Will you two stop! AAAAGH!"),
+                        new("drake", "mad", "AAAAGH! SHUT IT!"),
+                        new("drake", "mad", "Uuuugh take your love and shove it!"),
+                        new("drake", "mad", "Ugh! I wish I could just shove you both out the airlock!"),
+
+                        new("max", "blush", "... Can you cool it with the PDAs?"),
+                        new("max", "blush", "Is. Is now the time?"),
+                        new("max", "blush", "Is this entirely necessary?"),
+                        new("max", "blush", "... Can you two just get a room?"),
+                        new("max", "blush", "Am. Am I jealous?"),
+                        new("max", "mad", "..."),
+                        new("max", "blush", "Is it possible to tone it down a notch?"),
+                        new("max", "mad", "I'm not comfortable with this level of affection."),
+                        new("max", "mad", "You two need to like, get a room or something."),
+
+                        new("isaac", "shy", "Are all humans like this?"),
+                        new("isaac", "squint", "Man. Humans are weird."),
+                        new("isaac", "squint", "Are you two like this all the time?"),
+                        new("isaac", "squint", "Hey, can we focus?"),
+                        new("isaac", "squint", "Let's stay on task here, yeah?"),
+                        new("isaac", "squint", "Humans are strange."),
+                        new("isaac", "squint", "Humans..."),
+                        new("isaac", "shy", "Is there a better time for this than now?"),
+                        new("isaac", "shy", "Do you think you two could save this for later?"),
+                        new("isaac", "shy", "Why am I uncomfortable right now?"),
+
+                        new("books", "paws", "Hehe!"),
+                        new("books", "blush", "You both make me smile!"),
+                        new("books", "paws", "I hope I get to be in love like you are someday."),
+                        new("books", "paws", "Teehee!"),
+                        new("books", "blush", "I wanna be in love like you two are."),
+                        new("books", "paws", "Someday..."),
+                        new("books", "blush", "Hehe! You're both so pretty!"),
+                        new("books", "paws", "I want a girl to love me like this too."),
+                        new("books", "paws", "I wanna be in love with someone who's as pretty as you two are."),
+                        new("books", "blush", "Cat and Amy sitting in a tree! K. I. S. S. I. N. G."),
+
+                        new("peri", "blush", "..."),
+                        new("peri", "I need you two to focus."),
+                        new("peri", "Focus, you two."),
+                        new("peri", "Eyes on your controls!"),
+                        new("peri", "Hey! Eyes on your consoles!"),
+                        new("peri", "You two! Focus!"),
+                        new("peri", "I need you two to get your heads in the game."),
+                        new("peri", "Heads out of the clouds, you two."),
+                    ])
+                ]
+            }.ApplyModData(PairManager.GlobalGirlKey, PairManager.Girl.AMY)},
             {"CatJustHit", new DialogueMachine(){
                 type = NodeType.combat,
                 playerShotJustHit = true,
@@ -107,12 +199,8 @@ static class CombatDialogue {
                     new([
                         new("cna", "pumped", "Ha! Got one!"),  
                         new("cna", "pumped", "Yes!"),
-                        new("cna", "pumpedv2", "<a=c>Ha! Eat it!\n<a=a>Cat, you are so hot."),
-                        new("cna", "blushing", "<a=a>Heck yeah!\n<a=c>Amy, I will never stop swooning for you."),
                         new("cna", "pumped", "Bull's eye!"),
                         new("cna", "pumped", "Take this!"),
-                        new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
-                        new("cna", "pumped", "<a=a>Wahoo! It's on!\n<a=c>Dork."),
 
                         new("cna", "pumpedv2", "<a=a>Nice shot, babe!\n<a=c>Thanks!"),
                         new("cna", "agreeingv2", "<a=a>Good one, babe.\n<a=c>Thanks.")
@@ -128,18 +216,14 @@ static class CombatDialogue {
                     new([
                         new("cna", "pumped", "Ha! Got one!"),  
                         new("cna", "pumped", "Yes!"),
-                        new("cna", "pumpedv2", "<a=c>Ha! Eat it!\n<a=a>Cat, you are so hot."),
-                        new("cna", "blushing", "<a=a>Heck yeah!\n<a=c>Amy, I will never stop swooning for you."),
                         new("cna", "pumped", "Bull's eye!"),
                         new("cna", "pumped", "Take this!"),
-                        new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
-                        new("cna", "pumped", "<a=a>Wahoo! It's on!\n<a=c>Dork."),
 
                         new("cna", "neutralv2", "<a=c>Good shot, babe.\n<a=a>Thanks."),
                     ]),
                 ]
             }.ApplyModData(PairManager.GlobalGirlKey, PairManager.Girl.AMY)},
-            {"SomeoneJustHit_CatAndAmy", new DialogueMachine(){
+            {"WeHitForOverFiveDamage_CatAndAmy", new DialogueMachine(){
                 type = NodeType.combat,
                 playerShotJustHit = true,
                 minDamageDealtToEnemyThisAction = 6,
@@ -147,10 +231,7 @@ static class CombatDialogue {
                 oncePerCombat = true,
                 dialogue = [
                     new([
-                        new("cna", "pumped", "Yes!"),
-                        new("cna", "pumped", "Bull's eye!"),
-                        new("cna", "smug", "<a=c>Amy, if you ever leave me, I'll do that to you.\n<a=a>Roger."),
-                        new("cna", "pumped", "<a=a>Wahoo! It's on!\n<a=c>Dork."),
+                        new("cna", "pumped", "Nice!"),
                     ]),
                 ]
             }},
