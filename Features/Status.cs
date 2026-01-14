@@ -135,6 +135,7 @@ public class StatusManager : IHook, IKokoroApi.IV2.IStatusRenderingApi.IHook
 		if (args.Status == Instance.KissesStatus && args.Amount > 0) {
             args.Combat.Queue(new AAddCard {
                 card = new Kiss(),
+                amount = args.Amount,
                 statusPulse = args.Status,
                 destination = CardDestination.Hand
             });
@@ -143,6 +144,7 @@ public class StatusManager : IHook, IKokoroApi.IV2.IStatusRenderingApi.IHook
                 card = new Kiss {
                     upgrade = Upgrade.A
                 },
+                amount = args.Amount,
                 statusPulse = args.Status,
                 destination = CardDestination.Hand
             });
