@@ -77,7 +77,7 @@
         },
         "HeartShapedCookies": {
             "name": "HEART-SHAPED COOKIES",
-            "description": "On pickup, add 2 non-<c=cardtrait>temp</c> <c=card>Kisses</c> to your deck. The second time you play a <c=card>Kiss</c> each turn, gain 1 <c=status>OVERDRIVE</c>."
+            "description": "On pickup, add 2 non-<c=cardtrait>temporary</c> <c=card>Kisses</c> to your deck. The second time you play a <c=card>Kiss</c> each turn, gain 1 <c=status>OVERDRIVE</c>."
         },
         "WorkoutRoutine": {
             "name": "WORKOUT ROUTINE",
