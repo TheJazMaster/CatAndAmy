@@ -57,7 +57,9 @@ internal sealed class HeartShapedCookies : Artifact, IRegisterableArtifact
 
 	public override List<Tooltip>? GetExtraTooltips() => [
 		new TTCard {
-			card = new Kiss()
+			card = new Kiss {
+				temporaryOverride = false
+			}
 		}, .. StatusMeta.GetTooltips(Status.overdrive, 1)
 	];
 
